@@ -14,17 +14,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
-#include "rgb_matrix_anim_undef.h"
+#include "tap_dance.h"
+#include "custom_keycodes.h"
 
-#define RGB_DISABLE_WHEN_USB_SUSPENDED
-#define RGB_TRIGGER_ON_KEYDOWN
-#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
-#define RGB_MATRIX_KEYPRESSES
+tap_dance_action_t tap_dance_actions[] = {
+    [CT_QTM] = ACTION_TAP_DANCE_FN(dance_clear_reset),
+};
 
-#define ENABLE_RGB_MATRIX_PIXEL_FRACTAL
-#define ENABLE_RGB_MATRIX_TYPING_HEATMAP
-//#define ENABLE_RGB_MATRIX_DIGITAL_RAIN
-//#define ENABLE_RGB_MATRIX_RAINDROPS
-//#define ENABLE_RGB_MATRIX_SOLID_REACTIVE
-//#define ENABLE_RGB_MATRIX_RIVERFLOW
+void dance_clear_reset(tap_dance_state_t *state, void *user_data) {
+    switch (state->count) {
+        case 3: // Enter Bootloader
+            eeconfig_init();
+            reset_keyboard();
+            break;
+        case 4: // Clear EEPROM
+            eeconfig_init();
+            break;
+        case 5: // Reset
+            soft_reset_keyboard();
+            break;
+    }
+}

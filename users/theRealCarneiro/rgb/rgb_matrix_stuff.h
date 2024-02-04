@@ -15,16 +15,7 @@
  */
 
 #pragma once
-#include "rgb_matrix_anim_undef.h"
+#include "quantum.h"
 
-#define RGB_DISABLE_WHEN_USB_SUSPENDED
-#define RGB_TRIGGER_ON_KEYDOWN
-#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
-#define RGB_MATRIX_KEYPRESSES
-
-#define ENABLE_RGB_MATRIX_PIXEL_FRACTAL
-#define ENABLE_RGB_MATRIX_TYPING_HEATMAP
-//#define ENABLE_RGB_MATRIX_DIGITAL_RAIN
-//#define ENABLE_RGB_MATRIX_RAINDROPS
-//#define ENABLE_RGB_MATRIX_SOLID_REACTIVE
-//#define ENABLE_RGB_MATRIX_RIVERFLOW
+bool process_record_rgb_matrix(uint16_t keycode, keyrecord_t *record);
+void handle_idle_anim(void);

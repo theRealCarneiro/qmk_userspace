@@ -17,7 +17,26 @@
 #pragma once
 #include "quantum.h"
 
+enum caps_indicator_modes {
+    CAPS_INDICATOR_OFF,
+    CAPS_INDICATOR_DEFAULT_COLOR,
+    CAPS_INDICATOR_INVERT_COLOR,
+    CAPS_INDICATOR_INVERT_DEFAULT_COLOR
+};
+
+enum layer_indicator_modes {
+    LAYER_INDICATOR_OFF,
+    LAYER_INDICATOR_DEFAULT_COLOR,
+    LAYER_INDICATOR_INVERT_COLOR,
+    LAYER_INDICATOR_INVERT_DEFAULT_COLOR,
+    LAYER_INDICATOR_LIGHT_LAYER_ONLY
+};
+
 bool rgb_matrix_indicators_advanced_keymap(uint8_t led_min, uint8_t led_max);
-void rgb_matrix_caps_word_highlight(void);
-void rgb_matrix_caps_lock_highlight(void);
+void rgb_matrix_caps_word_highlight(uint8_t led_min, uint8_t led_max);
+void rgb_matrix_caps_lock_highlight(uint8_t led_min, uint8_t led_max);
 void rgb_matrix_layer_highlight(uint8_t led_min, uint8_t led_max);
+RGB get_layer_highlight_rgb(void);
+RGB get_caps_highlight_rgb(void);
+HSV hsv_step(HSV hsv);
+HSV get_default_hsv(void);

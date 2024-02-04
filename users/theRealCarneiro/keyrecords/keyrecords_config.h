@@ -14,17 +14,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
-#include "rgb_matrix_anim_undef.h"
+//#pragma once
 
-#define RGB_DISABLE_WHEN_USB_SUSPENDED
-#define RGB_TRIGGER_ON_KEYDOWN
-#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
-#define RGB_MATRIX_KEYPRESSES
-
-#define ENABLE_RGB_MATRIX_PIXEL_FRACTAL
-#define ENABLE_RGB_MATRIX_TYPING_HEATMAP
-//#define ENABLE_RGB_MATRIX_DIGITAL_RAIN
-//#define ENABLE_RGB_MATRIX_RAINDROPS
-//#define ENABLE_RGB_MATRIX_SOLID_REACTIVE
-//#define ENABLE_RGB_MATRIX_RIVERFLOW
+// Add delay to key release so that games can register LT
+//#ifndef NO_TAP_CODE_DELAY
+//#    define TAP_CODE_DELAY 20
+//#endif // NO_TAP_CODE_DELAY

@@ -15,16 +15,36 @@
  */
 
 #pragma once
-#include "rgb_matrix_anim_undef.h"
 
-#define RGB_DISABLE_WHEN_USB_SUSPENDED
-#define RGB_TRIGGER_ON_KEYDOWN
-#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
-#define RGB_MATRIX_KEYPRESSES
+#include "quantum.h"
+#include "action.h"
+#include "version.h"
 
-#define ENABLE_RGB_MATRIX_PIXEL_FRACTAL
-#define ENABLE_RGB_MATRIX_TYPING_HEATMAP
-//#define ENABLE_RGB_MATRIX_DIGITAL_RAIN
-//#define ENABLE_RGB_MATRIX_RAINDROPS
-//#define ENABLE_RGB_MATRIX_SOLID_REACTIVE
-//#define ENABLE_RGB_MATRIX_RIVERFLOW
+enum userspace_custom_keycodes {
+
+    // macros
+    SELWORD = SAFE_RANGE,
+    SELLINE,
+    WORDFOR,
+    WORDBAC,
+
+    // RGB
+    RGB_IDT, // RGB toggle idle config status
+    RGB_ISA, // RGB idle set animation
+    RGB_ITG, // RGB toggle indicator config status
+             //
+    RGB_LIN, // RGB layer indicator mode next
+    RGB_LIP, // RGB layer indicator mode previous
+
+    RGB_CIN, // RGB caps indicator mode next
+    RGB_CIP, // RGB caps indicator mode previous
+};
+
+#ifdef TAP_DANCE_ENABLE
+#    define QT_DNCE TD(CT_QTM)
+
+enum tap_dance_index {
+    CT_QTM, // Quantum tap dance
+};
+
+#endif // TAP_DANCE_ENABLE
